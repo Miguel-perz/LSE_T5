@@ -52,19 +52,39 @@ class LSE
 		Nodo *Buscar(int);
 		void Borrar(int);
 };
-
-
-
-
-
-
+void LSE::InsertarI(int x)
+{
+	if(!Inicio)
+	Inicio=new Nodo(x);
+	else
+	{
+		Nodo *helpx3=new Nodo(x);
+		helpx3->Asignasig(Inicio);
+		Inicio->Asignasig(helpx3);
+		Inicio=helpx3;
+	}
+}
+void LSE::InsertarF(int x)
+{
+	if(!Inicio)
+	Inicio=new Nodo(x);
+	else
+	{
+		Nodo *help=Inicio;
+		while(help->Obtienesig()!=NULL)
+		help=help->Obtienesig();
+		Nodo *helpx2=new Nodo(x);
+		help->Asignasig(helpx2);
+		helpx2->Asignasig(help);
+	}
+}
 
 int main(int argc, const char * argv[])
 {
     
     
     
-    LDE A;
+    LSE A;
     int opc, dato;
     do{
         cout<<"1.- Insertar Inicio"<<endl;
