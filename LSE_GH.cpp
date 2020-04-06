@@ -52,7 +52,51 @@ class LSE
 		Nodo *Buscar(int);
 		void Borrar(int);
 };
-
+void LSE::BorrarI()
+{
+    if(!Inicio)
+        cout<<"Lista Vacia"<<endl;
+    else
+    {
+        if(Inicio==Fin)
+        {
+            delete Inicio;
+            Fin=NULL;
+            Inicio=NULL;
+        }
+        else
+        {
+            Nodo *hay=Inicio;
+            hay->Asignasig(NULL);
+            Inicio->Asignabefore(NULL);
+            Inicio->Asignasig(NULL);
+            
+            delete hay;
+        }
+    }
+}
+void LSE::BorrarF()
+{    if(!Inicio)
+    cout<<"Lista Vacia";
+    else
+        {
+            if(Inicio==Fin)
+                {
+                    delete Inicio;
+                    Inicio=NULL;
+                    Fin=NULL;
+                }
+            else
+                {
+                    Nodo *Sh;
+                    Sh=Fin->Obtienesbefore();
+                    Sh->Asignasig(NULL);
+                    Fin->Asignabefore(NULL);
+                    delete Fin;
+                    Fin=Sh;
+                }
+        }
+}
 
 
 
